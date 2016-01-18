@@ -1,0 +1,36 @@
+{% extends "generic_page.html" %}
+
+{% block title %}Authorize{% endblock %}
+
+{% block body %}
+  <h1>Authorize</h1>
+  <p>For application <b>{{client_name}}</b></p>
+  <form method="POST">
+    {% if state is not none %}
+        <input name="state" type="hidden" value="{{state}}"></input>
+    {% endif %}
+    <input name="client_id" type="hidden" value="{{client_id}}"></input>
+    <table>
+      <tbody>
+        <tr>
+          <td style="text-align:right">Login:</td>
+          <td>
+            <input name="login" pattern="^[A-Za-z]([-_]?[A-Za-z0-9]+)*$"></input>
+          </td>
+        </tr>  
+        <tr>
+          <td style="text-align:right">Password:</td>
+          <td>
+            <input name="password" type="password" pattern="^.{6,}$"></input>
+          </td>
+        </tr>  
+        <tr>
+          <td></td>
+          <td style="text-align:right">
+            <input type="submit" value="Sign in!"></input>
+          </td>
+        </tr>  
+      </tbody>
+    </table>
+  </form>
+{% endblock  %}
